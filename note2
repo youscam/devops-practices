@@ -1,0 +1,97 @@
+#####################################################################################
+### https://hub.docker.com/?overlay=onboarding
+#####################################################################################
+git clone https://github.com/docker/doodle.git // clone git project
+cd doodle\cheers2019 ; docker build -t youscam/cheers2019 . // build image
+docker run -it --rm youscam/cheers2019 // run it on mode interactive way
+docker login ; docker push youscam/cheers2019 // push 
+#####################################################################################
+
+
+
+docker ps -a // see all containers 
+docker images // see all local images 
+docker run -d -p 50:80 jasonrivers/nagios //  run on mode daemon 
+docker run -it -p 60:80 sonarqube  // run on mode interactive
+
+
+docker exec -it <id_machine> bash // execute bash on mode interactive il faut que l image sois déjà démarer 
+
+
+Create Image
+docker commit  <id_machine> kamal/java-maven:1.0  // create new image from container
+
+
+
+
+#####################################################################################
+### Lister les images 
+#####################################################################################
+docker images 
+docker image ls 
+#####################################################################################
+
+
+#####################################################################################
+RUN au moment de build ces commandes vont s executer 
+CMD une fois terminer le container va s arrêter 
+#####################################################################################
+
+
+
+#####################################################################################
+HOW TO push to jenkins repository 
+#####################################################################################
+Pro tip
+You can push a new image to this repository using the CLI
+
+docker tag local-image:tagname new-repo:tagname ex: docker tag youscam/cheers2019:latest  youscam/devops:cheers2019
+docker push new-repo:tagname ex: docker push youscam/devops:cheers2019
+Make sure to change tagname with your desired image repository tag.
+#####################################################################################
+
+
+
+docker run -it  -v C:\Users\G522982\Desktop\formation_devops\projects\web-app\faculty:/usr/home/faculty maven bash
+
+
+container 
+ docker container ls -a // list container 
+ docker container rm <container_id> // delete container 
+
+
+
+#######################################
+docker run -it  -v c:\Users\G522982\Desktop\formation_devops\projects\web-app\faculty:/usr/home/faculty maven bash
+problem lors de l utilisation de -v on docker run 
+
+Yes,
+it returns the message “C:\Program Files\Docker\Docker\Resources\bin\docker.exe: Error response from daemon: D: drive is not shared. Please share it in Docker for Windows Settings.” 
+
+#######################################
+BEST practice to build java app 
+docker run -it  -v c:\Users\G522982\Desktop\formation_devops\projects\web-app\:/usr/home/microservice ubuntu bash
+apt-get update -y && apt-get upgrade -y && apt-get -y install openjdk-8-jdk maven
+ 
+
+ jar 
+ java &&
+
+
+
+docker ps -a
+# faculty
+#docker build --file faculty/Dockerfile
+ cd .\faculty\ ; docker build -t web-app-faculty .
+# report
+docker build --file report/Dockerfile
+# config
+d/ocker build --file config/Dockerfile
+# eureka
+docker build --file eureka/Dockerfile
+# zuul
+docker build --file zuul/Dockerfile
+
+docker ps -als./
+
+cd /usr/home/microservice/faculty && mvn install -DskipTests && cd /usr/home/microservice/report && mvn install -DskipTests && cd /usr/home/microservice/config && mvn install -DskipTests && cd /usr/home/microservice/eureka && mvn install -DskipTests && cd /usr/home/microservice/zuul && mvn install -DskipTests && cd /usr/home/microservice/
